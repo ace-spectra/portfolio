@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <title>Ace Spectra</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Manrope", sans-serif;
+        }
+
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slides {
+            position: absolute;
+            inset: 0;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: 1;
+        }
+
+        .floating-topbar {
+            position: fixed;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 12px 25px;
+
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+
+            z-index: 10;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 120px;
+            transform: translateY(-50%);
+
+            max-width: 700px;
+
+            color: white;
+            z-index: 2;
+        }
+
+        .hero-text h2 {
+            font-size: 55px;
+            line-height: 1.1;
+        }
+
+        .hero-text p {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .hero-text a {
+            display: inline-block;
+
+            margin-top: 30px;
+            padding: 14px 28px;
+
+            background: white;
+            color: black;
+
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .dots {
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            display: flex;
+            gap: 10px;
+
+            z-index: 5;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+
+            border-radius: 50%;
+            background: white;
+
+            opacity: 0.5;
+        }
+
+        .dot.active {
+            opacity: 1;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <section class="hero">
+
+        <div class="slides">
+            <img src="public/images/20250723_103440.png" class="slide active">
+            <img src="public/images/20260331_105727.png" class="slide">
+            <img src="public/images/20260331_105732.png" class="slide">
+        </div>
+
+        <div class="overlay"></div>
+
+        <header class="floating-topbar">
+            <nav>
+                <a href="/" class="active">Home</a>
+                <a href="">Skillsets</a>
+                <a href="">Projects</a>
+                <a href="">Hobbies</a>
+            </nav>
+        </header>
+
+        <div class="hero-text">
+
+            <h2>
+                Building things with code.<br>
+                Exploring Ideas.
+            </h2>
+
+            <p>
+                I'm Ace, a developer focused on creating websites, software and learning through every project.
+            </p>
+
+            <a href="/projects">
+                View Projects
+            </a>
+
+        </div>
+
+        <div class="dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+    </section>
+
+
+    <script>
+
+        let slides = document.querySelectorAll(".slide");
+        let dots = document.querySelectorAll(".dot");
+
+        let current = 0;
+
+        setInterval(() => {
+
+            slides[current].classList.remove("active");
+            dots[current].classList.remove("active");
+
+            current++;
+
+            if (current >= slides.length) {
+                current = 0;
+            }
+
+            slides[current].classList.add("active");
+            dots[current].classList.add("active");
+
+        }, 5000);
+
+    </script>
+
+</body>
+
+</html>
