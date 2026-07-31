@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="public/images/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <title>Ace Spectra | Skillsets</title>
+
+    <meta property="og:title" content="Ace Spectra | Portfolio">
+    <meta property="og:description" content="Building websites, software and exploring ideas through code. Explore my projects, skills, and journey as a developer.">
+    <meta property="og:image" content="https://acespectra.pages.dev/public/images/Screenshot_27-7-2026_214838_acespectra.pages.dev.jpeg">
+    <meta property="og:url" content="https://acespectra.pages.dev/skillsets">
+    <meta property="og:type" content="website">
+
+    <meta name="theme-color" content="#0b0b0f">
+    <meta name="author" content="Ace Spectra">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Manrope", sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.85)),
+                url("public/images/20250723_103440.png");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        .floating-topbar {
+            position: fixed;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 25px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(12px);
+            border: 2px solid rgba(255,255,255,.5);
+            border-radius: 10px;
+            z-index: 10;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: .2s;
+        }
+
+        nav a:hover {
+            opacity: .7;
+        }
+
+        nav a.active {
+            opacity: .65;
+        }
+
+        .skill-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding-top: 140px;
+            padding-bottom: 80px;
+        }
+
+        .skill-container h1 {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .skill-container p {
+            font-size: 18px;
+            opacity: .8;
+            max-width: 700px;
+            margin-bottom: 50px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: rgba(255,255,255,.12);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,.25);
+            border-radius: 18px;
+            padding: 30px;
+            transition: .3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255,255,255,.18);
+        }
+
+        .skill-card h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .badges img {
+            height: 35px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="floating-topbar">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/skillsets" class="active">Skillsets</a>
+            <a href="/projects">Projects</a>
+            <a href="/hobbies">Hobbies</a>
+        </nav>
+    </header>
+
+    <section class="skill-container">
+        <h1>Skillsets</h1>
+
+        <p>
+            Technologies and tools I use to build websites,
+            software, games and online platforms.
+        </p>
+
+        <div class="skills-grid">
+
+            <div class="skill-card">
+                <h2>Frontend Development</h2>
+                <div class="badges">
+                    <img src="https://badges.penpow.dev/badges/cozy/html.svg">
+                    <img src="https://badges.penpow.dev/badges/cozy/css.svg">
+                    <img src="https://badges.penpow.dev/badges/cozy/javascript.svg">
+                    <img src="https://badges.penpow.dev/badges/cozy/tailwind.svg">
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h2>Backend Development</h2>
+                <div class="badges">
+                    <img src="https://badges.penpow.dev/badges/cozy/nodejs.svg">
+                    <img src="https://badges.penpow.dev/badges/cozy/python.svg">
+                    <img src="https://badges.penpow.dev/badges/cozy/mysql.svg">
+                    <img src="https://badges.penpow.dev/badges/cozy/postgresql.svg">
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h2>Frameworks & Platforms</h2>
+                <div class="badges">
+                    <img src="https://badges.penpow.dev/badges/cozy/express.svg">
+                    <img src="https://badges.penpow.dev/badges/cozy/react.svg">
+                    <img src="https://badges.penpow.dev/badges/cozy/nextjs.svg">
+                    <img src="https://badges.penpow.dev/badges/cozy/cloudflare.svg">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+
+</html>
