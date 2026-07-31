@@ -14,23 +14,14 @@
 
     <meta property="og:title" content="Ace Spectra | Portfolio">
     <meta property="og:description" content="Building websites, software and exploring ideas through code. Explore my projects, skills, and journey as a developer.">
+    <meta property="og:image" content="https://acespectra.pages.dev/public/images/Screenshot_27-7-2026_214838_acespectra.pages.dev.jpeg">
     <meta property="og:url" content="https://acespectra.pages.dev/skillsets">
     <meta property="og:type" content="website">
 
-    <meta name="theme-color" content="#060608">
+    <meta name="theme-color" content="#0b0b0f">
     <meta name="author" content="Ace Spectra">
 
     <style>
-        :root {
-            --bg-main: #060608;
-            --card-bg: rgba(255, 255, 255, 0.02);
-            --card-border: rgba(255, 255, 255, 0.06);
-            --card-hover-border: rgba(255, 255, 255, 0.15);
-            --text-primary: #ffffff;
-            --text-secondary: #a1a1aa;
-            --accent: #3b82f6; /* Modern Blue */
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -40,208 +31,149 @@
 
         body {
             min-height: 100vh;
-            background-color: var(--bg-main);
-            /* Optional: Keep your background image, but heavily darkened so it doesn't distract */
-            background-image: 
-                linear-gradient(to bottom, rgba(6, 6, 8, 0.85), rgba(6, 6, 8, 1)),
+            background:
+                linear-gradient(rgba(11, 11, 15, 0.75), rgba(11, 11, 15, 0.92)),
                 url("/public/images/20250723_103440.png");
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            color: var(--text-primary);
+            color: #ffffff;
             display: flex;
             flex-direction: column;
-            overflow-x: hidden;
         }
 
-        /* --- Animations --- */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-in {
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        /* --- Navigation --- */
         .floating-topbar {
             position: fixed;
-            top: 32px;
+            top: 25px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 8px 12px;
-            background: rgba(20, 20, 25, 0.6);
-            -webkit-backdrop-filter: blur(24px);
-            backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px 28px;
+            background: rgba(255, 255, 255, 0.08);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 9999px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
             z-index: 100;
         }
 
         nav {
             display: flex;
-            gap: 8px;
+            gap: 28px;
         }
 
         nav a {
-            color: var(--text-secondary);
+            color: rgba(255, 255, 255, 0.75);
             text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            padding: 8px 16px;
-            border-radius: 9999px;
-            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
         }
 
         nav a:hover {
-            color: var(--text-primary);
-            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            opacity: 1;
         }
 
         nav a.active {
-            color: var(--bg-main);
-            background: var(--text-primary);
+            color: #ffffff;
             font-weight: 700;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+            padding-bottom: 2px;
         }
 
-        /* --- Main Content --- */
         .skill-container {
-            width: 100%;
-            max-width: 1200px;
+            width: 90%;
+            max-width: 1140px;
             margin: 0 auto;
-            padding: 160px 5% 100px 5%;
+            padding-top: 150px;
+            padding-bottom: 80px;
             flex: 1;
         }
 
-        .kicker {
-            color: var(--accent);
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-            display: block;
-        }
-
         .skill-container h1 {
-            font-size: 3.5rem;
+            font-size: 3.25rem;
             font-weight: 800;
-            letter-spacing: -0.03em;
-            margin-bottom: 24px;
-            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .skill-container p {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            max-width: 580px;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 640px;
             line-height: 1.6;
-            margin-bottom: 64px;
+            margin-bottom: 48px;
         }
 
-        /* --- Cards Grid --- */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
         }
 
         .skill-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 24px;
-            padding: 40px;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.05);
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 32px;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.3s ease, 
+                        background-color 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
 
         .skill-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--card-hover-border);
-            background: rgba(255, 255, 255, 0.04);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.25);
         }
 
         .skill-card h2 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 32px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        /* Subtle dot next to card titles */
-        .skill-card h2::before {
-            content: '';
-            display: block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--text-secondary);
-            opacity: 0.5;
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 12px;
         }
 
         .badges {
             display: flex;
             flex-wrap: wrap;
-            gap: 16px;
+            gap: 12px;
             align-items: center;
         }
 
         .badges img {
-            height: 46px;
+            height: 48px; /* Slightly increased for skillicons to look crisper */
             width: auto;
-            border-radius: 12px; /* Smoothes out the icons nicely */
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+            transition: transform 0.2s ease;
+            cursor: pointer;
         }
 
         .badges img:hover {
-            transform: scale(1.15) translateY(-4px);
-        }
-
-        /* --- Mobile Responsive --- */
-        @media (max-width: 860px) {
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
+            transform: scale(1.1); /* Bumped scale up slightly for better feel */
         }
 
         @media (max-width: 640px) {
+            .skill-container h1 {
+                font-size: 2.25rem;
+            }
             .floating-topbar {
                 width: 90%;
-                top: 20px;
             }
             nav {
-                width: 100%;
-                justify-content: space-between;
-                gap: 4px;
-            }
-            nav a {
-                padding: 8px 12px;
-                font-size: 0.85rem;
-            }
-            .skill-container {
-                padding-top: 130px;
-            }
-            .skill-container h1 {
-                font-size: 2.5rem;
-            }
-            .skill-card {
-                padding: 32px;
+                gap: 16px;
             }
         }
     </style>
@@ -258,18 +190,18 @@
         </nav>
     </header>
 
-    <main class="skill-container animate-in">
-        <span class="kicker">My Expertise</span>
-        <h1>Tools &<br>Technologies.</h1>
+    <main class="skill-container">
+        <h1>Skillsets</h1>
 
         <p>
-            The software, languages, and frameworks I use to build scalable websites, applications, and digital experiences.
+            Technologies and tools I use to build websites,
+            software, games, and online platforms.
         </p>
 
         <div class="skills-grid">
 
             <div class="skill-card">
-                <h2>Frontend Engineering</h2>
+                <h2>Frontend Development</h2>
                 <div class="badges">
                     <img alt="HTML5" src="https://skillicons.dev/icons?i=html">
                     <img alt="CSS3" src="https://skillicons.dev/icons?i=css">
@@ -279,7 +211,7 @@
             </div>
 
             <div class="skill-card">
-                <h2>Backend & Databases</h2>
+                <h2>Backend Development</h2>
                 <div class="badges">
                     <img alt="Node.js" src="https://skillicons.dev/icons?i=nodejs">
                     <img alt="Python" src="https://skillicons.dev/icons?i=py">
@@ -289,7 +221,7 @@
             </div>
 
             <div class="skill-card">
-                <h2>Frameworks & Infrastructure</h2>
+                <h2>Frameworks & Platforms</h2>
                 <div class="badges">
                     <img alt="Express" src="https://skillicons.dev/icons?i=express">
                     <img alt="Next.js" src="https://skillicons.dev/icons?i=nextjs">
@@ -298,14 +230,16 @@
             </div>
 
             <div class="skill-card">
-                <h2>Design & Workflow</h2>
+                <h2>Additional Tools</h2>
                 <div class="badges">
                     <img alt="Git" src="https://skillicons.dev/icons?i=git">
                     <img alt="GitHub" src="https://skillicons.dev/icons?i=github">
                     <img alt="VS Code" src="https://skillicons.dev/icons?i=vscode">
                     <img alt="Photoshop" src="https://skillicons.dev/icons?i=ps">
-                    <img alt="Adobe Express" src="https://img.shields.io/badge/Express-EB1000?style=for-the-badge&logo=adobe&logoColor=white" style="height: 38px;">
-                    <img alt="Adobe InDesign" src="https://img.shields.io/badge/InDesign-FF3366?style=for-the-badge&logo=adobe%20indesign&logoColor=white" style="height: 38px;">
+                    
+                    <!-- Skillicons doesn't have these two natively, falling back to clean block badges -->
+                    <img alt="Adobe Express" src="https://img.shields.io/badge/Express-EB1000?style=for-the-badge&logo=adobe&logoColor=white" style="height: 32px; border-radius: 6px;">
+                    <img alt="Adobe InDesign" src="https://img.shields.io/badge/InDesign-FF3366?style=for-the-badge&logo=adobe%20indesign&logoColor=white" style="height: 32px; border-radius: 6px;">
                 </div>
             </div>
 
