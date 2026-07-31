@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="public\images\favicon.ico">
+    <link rel="icon" type="image/png" href="/public/images/favicon.ico">
 
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -97,6 +97,16 @@
             color: white;
             text-decoration: none;
             font-weight: 600;
+            opacity: 0.65;
+            transition: opacity .2s ease;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+
+        nav a.active {
+            opacity: 1;
         }
 
         .hero-text {
@@ -133,6 +143,12 @@
             border-radius: 10px;
             text-decoration: none;
             font-weight: 700;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .hero-text a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
         }
 
         .dots {
@@ -161,6 +177,18 @@
             opacity: 1;
         }
 
+        @media (max-width: 700px) {
+            .hero-text {
+                left: 24px;
+                right: 24px;
+                max-width: none;
+            }
+
+            .hero-text h2 {
+                font-size: 38px;
+            }
+        }
+
     </style>
 </head>
 
@@ -170,9 +198,9 @@
     <section class="hero">
 
         <div class="slides">
-            <img src="public/images/20250723_103440.png" class="slide active">
-            <img src="public/images/20260331_105727.png" class="slide">
-            <img src="public/images/20260331_105732.png" class="slide">
+            <img src="/public/images/20250723_103440.png" class="slide active" alt="">
+            <img src="/public/images/20260331_105727.png" class="slide" alt="">
+            <img src="/public/images/20260331_105732.png" class="slide" alt="">
         </div>
 
         <div class="overlay"></div>
@@ -180,9 +208,9 @@
         <header class="floating-topbar">
             <nav>
                 <a href="/" class="active">Home</a>
-                <a href="/skillsets">Skillsets</a>
-                <a href="">Projects</a>
-                <a href="">Hobbies</a>
+                <a href="/skillsets/">Skillsets</a>
+                <a href="/projects/">Projects</a>
+                <a href="/hobbies/">Hobbies</a>
             </nav>
         </header>
 
@@ -197,7 +225,7 @@
                 I'm Ace, a developer focused on creating websites, software and learning through every project.
             </p>
 
-            <a href="/projects">
+            <a href="/projects/">
                 View Projects
             </a>
 

@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" type="image/png" href="public/images/favicon.ico">
+    <link rel="icon" type="image/png" href="/public/images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <title>Ace Spectra | Skillsets</title>
@@ -30,12 +32,14 @@
         body {
             min-height: 100vh;
             background:
-                linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.85)),
-                url("public/images/20250723_103440.png");
+                linear-gradient(rgba(11, 11, 15, 0.75), rgba(11, 11, 15, 0.92)),
+                url("/public/images/20250723_103440.png");
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            color: white;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
         }
 
         .floating-topbar {
@@ -46,87 +50,130 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 12px 25px;
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(12px);
-            border: 2px solid rgba(255,255,255,.5);
-            border-radius: 10px;
-            z-index: 10;
+            padding: 12px 28px;
+            background: rgba(255, 255, 255, 0.08);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 9999px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            z-index: 100;
         }
 
         nav {
             display: flex;
-            gap: 25px;
+            gap: 28px;
         }
 
         nav a {
-            color: white;
+            color: rgba(255, 255, 255, 0.75);
             text-decoration: none;
             font-weight: 600;
-            transition: .2s;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
         }
 
         nav a:hover {
-            opacity: .7;
+            color: #ffffff;
+            opacity: 1;
         }
 
         nav a.active {
-            opacity: .65;
+            color: #ffffff;
+            font-weight: 700;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+            padding-bottom: 2px;
         }
 
         .skill-container {
             width: 90%;
-            max-width: 1200px;
-            margin: auto;
-            padding-top: 140px;
+            max-width: 1140px;
+            margin: 0 auto;
+            padding-top: 150px;
             padding-bottom: 80px;
+            flex: 1;
         }
 
         .skill-container h1 {
-            font-size: 55px;
-            margin-bottom: 15px;
+            font-size: 3.25rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .skill-container p {
-            font-size: 18px;
-            opacity: .8;
-            max-width: 700px;
-            margin-bottom: 50px;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 640px;
+            line-height: 1.6;
+            margin-bottom: 48px;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
         }
 
         .skill-card {
-            background: rgba(255,255,255,.12);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,.25);
-            border-radius: 18px;
-            padding: 30px;
-            transition: .3s;
+            background: rgba(255, 255, 255, 0.05);
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 32px;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.3s ease, 
+                        background-color 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
 
         .skill-card:hover {
-            transform: translateY(-8px);
-            background: rgba(255,255,255,.18);
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.25);
         }
 
         .skill-card h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 12px;
         }
 
         .badges {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
+            align-items: center;
         }
 
         .badges img {
-            height: 35px;
+            height: 38px;
+            width: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+            transition: transform 0.2s ease;
+        }
+
+        .badges img:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 640px) {
+            .skill-container h1 {
+                font-size: 2.25rem;
+            }
+            .floating-topbar {
+                width: 90%;
+            }
+            nav {
+                gap: 16px;
+            }
         }
     </style>
 </head>
@@ -142,12 +189,12 @@
         </nav>
     </header>
 
-    <section class="skill-container">
+    <main class="skill-container">
         <h1>Skillsets</h1>
 
         <p>
             Technologies and tools I use to build websites,
-            software, games and online platforms.
+            software, games, and online platforms.
         </p>
 
         <div class="skills-grid">
@@ -155,35 +202,45 @@
             <div class="skill-card">
                 <h2>Frontend Development</h2>
                 <div class="badges">
-                    <img src="https://badges.penpow.dev/badges/cozy/html.svg">
-                    <img src="https://badges.penpow.dev/badges/cozy/css.svg">
-                    <img src="https://badges.penpow.dev/badges/cozy/javascript.svg">
-                    <img src="https://badges.penpow.dev/badges/cozy/tailwind.svg">
+                    <img alt="HTML5" src="https://badges.penpow.dev/badges/cozy/html/medium.svg">
+                    <img alt="CSS3" src="https://badges.penpow.dev/badges/cozy/css/medium.svg">
+                    <img alt="JavaScript" src="https://badges.penpow.dev/badges/cozy/javascript/medium.svg">
+                    <img alt="Tailwind CSS" src="https://badges.penpow.dev/badges/cozy/tailwind/medium.svg">
                 </div>
             </div>
 
             <div class="skill-card">
                 <h2>Backend Development</h2>
                 <div class="badges">
-                    <img src="https://badges.penpow.dev/badges/cozy/nodejs.svg">
-                    <img src="https://badges.penpow.dev/badges/cozy/python.svg">
-                    <img src="https://badges.penpow.dev/badges/cozy/mysql.svg">
-                    <img src="https://badges.penpow.dev/badges/cozy/postgresql.svg">
+                    <img alt="Node.js" src="https://badges.penpow.dev/badges/cozy/nodejs/medium.svg">
+                    <img alt="Python" src="https://badges.penpow.dev/badges/cozy/python/medium.svg">
+                    <img alt="MySQL" src="https://badges.penpow.dev/badges/cozy/mysql/medium.svg">
+                    <img alt="PostgreSQL" src="https://badges.penpow.dev/badges/cozy/postgresql/medium.svg">
                 </div>
             </div>
 
             <div class="skill-card">
                 <h2>Frameworks & Platforms</h2>
                 <div class="badges">
-                    <img src="https://badges.penpow.dev/badges/cozy/express.svg">
-                    <img src="https://badges.penpow.dev/badges/cozy/react.svg">
-                    <img src="https://badges.penpow.dev/badges/cozy/nextjs.svg">
-                    <img src="https://badges.penpow.dev/badges/cozy/cloudflare.svg">
+                    <img alt="Express" src="https://badges.penpow.dev/badges/cozy/express/medium.svg">
+                    <img alt="Next.js" src="https://badges.penpow.dev/badges/cozy/nextjs/medium.svg">
+                    <img alt="Cloudflare" src="https://badges.penpow.dev/badges/cozy/cloudflare/medium.svg">
                 </div>
             </div>
 
+            <div class="skill-card">
+                <h2>Additional Tools</h2>
+                <div class="badges">
+                    <img alt="Git" src="https://badges.penpow.dev/badges/cozy/git/medium.svg">
+                    <img alt="GitHub" src="https://badges.penpow.dev/badges/cozy/github/medium.svg">
+                    <img alt="VS Code" src="https://badges.penpow.dev/badges/cozy/vscode/medium.svg">
+                    <img alt="Photoshop" src="https://badges.penpow.dev/badges/cozy/photoshop/medium.svg">
+                    <img alt="Adobe Express" src="https://badges.penpow.dev/badges/cozy/adobe-express/medium.svg">
+                    <img alt="Adobe InDesign" src="https://badges.penpow.dev/badges/cozy/adobe-indesign/medium.svg">
+                </div>
+
         </div>
-    </section>
+    </main>
 
 </body>
 
