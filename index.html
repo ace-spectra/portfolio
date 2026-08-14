@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="/public/images/favicon.ico">
-
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
     <title>Ace Spectra</title>
 
     <meta property="og:title" content="Ace Spectra | Portfolio">
@@ -16,24 +13,28 @@
     <meta property="og:url" content="https://acespectra.pages.dev/">
     <meta property="og:type" content="website">
     <meta name="theme-color" content="#0b0b0f">
-
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Ace Spectra | Portfolio">
-    <meta name="twitter:description" content="Building websites, software and exploring ideas through code. Explore my projects, skills, and journey as a developer.">
+    <meta name="twitter:description" content="Building websites, software and exploring ideas through code.">
     <meta name="twitter:image" content="https://acespectra.pages.dev/public/images/Screenshot_27-7-2026_214838_acespectra.pages.dev.jpeg">
-
-    <meta name="instagram:title" content="Ace Spectra | Developer Portfolio">
-    <meta name="instagram:description" content="Building websites, software and exploring ideas through code.">
-
     <meta name="author" content="Ace Spectra">
 
     <style>
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: "Manrope", sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #08080b;
+            color: white;
+            overflow-x: hidden;
         }
 
         .hero {
@@ -72,19 +73,14 @@
             top: 25px;
             left: 50%;
             transform: translateX(-50%);
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             padding: 12px 25px;
-
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(12px);
-
             border: 2px solid rgba(255, 255, 255, 0.5);
             border-radius: 10px;
-
             z-index: 10;
         }
 
@@ -98,7 +94,7 @@
             text-decoration: none;
             font-weight: 600;
             opacity: 0.65;
-            transition: opacity .2s ease;
+            transition: opacity 0.2s ease;
         }
 
         nav a:hover {
@@ -114,9 +110,7 @@
             top: 50%;
             left: 120px;
             transform: translateY(-50%);
-
             max-width: 700px;
-
             color: white;
             z-index: 2;
         }
@@ -133,17 +127,14 @@
 
         .hero-text a {
             display: inline-block;
-
             margin-top: 30px;
             padding: 14px 28px;
-
             background: white;
             color: black;
-
             border-radius: 10px;
             text-decoration: none;
             font-weight: 700;
-            transition: transform .2s ease, box-shadow .2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .hero-text a:hover {
@@ -156,20 +147,16 @@
             bottom: 35px;
             left: 50%;
             transform: translateX(-50%);
-
             display: flex;
             gap: 10px;
-
             z-index: 5;
         }
 
         .dot {
             width: 12px;
             height: 12px;
-
             border-radius: 50%;
             background: white;
-
             opacity: 0.5;
         }
 
@@ -177,7 +164,252 @@
             opacity: 1;
         }
 
-        @media (max-width: 700px) {
+        .projects-section {
+            position: relative;
+            min-height: 1500px;
+            overflow: hidden;
+            background: #08080b;
+        }
+
+        .projects-background {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .projects-background::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(5, 5, 8, 0.55);
+        }
+
+        .shape {
+            position: absolute;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            pointer-events: none;
+            will-change: transform;
+        }
+
+        .shape-1 {
+            width: 650px;
+            height: 650px;
+            top: 50px;
+            left: -220px;
+            border-radius: 47% 53% 62% 38% / 45% 35% 65% 55%;
+            background: linear-gradient(135deg, rgba(100, 100, 255, 0.22), rgba(255, 255, 255, 0.025));
+            transform: rotate(-25deg);
+            filter: blur(1px);
+        }
+
+        .shape-2 {
+            width: 550px;
+            height: 550px;
+            top: 400px;
+            right: -180px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(180, 100, 255, 0.2), rgba(255, 255, 255, 0.02) 65%, transparent 75%);
+            filter: blur(2px);
+        }
+
+        .shape-3 {
+            width: 450px;
+            height: 450px;
+            top: 850px;
+            left: 10%;
+            border-radius: 42% 58% 60% 40%;
+            background: linear-gradient(135deg, rgba(80, 160, 255, 0.16), rgba(255, 255, 255, 0.02));
+            transform: rotate(35deg);
+        }
+
+        .shape-4 {
+            width: 700px;
+            height: 350px;
+            top: 1100px;
+            right: -250px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(130, 100, 255, 0.16));
+            transform: rotate(-15deg);
+            filter: blur(5px);
+        }
+
+        .ring {
+            position: absolute;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .ring-1 {
+            width: 450px;
+            height: 450px;
+            top: 250px;
+            right: 15%;
+        }
+
+        .ring-2 {
+            width: 550px;
+            height: 550px;
+            top: 900px;
+            left: -180px;
+        }
+
+        .projects-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 150px 30px;
+        }
+
+        .section-heading {
+            max-width: 700px;
+            margin-bottom: 100px;
+        }
+
+        .section-label {
+            display: inline-block;
+            margin-bottom: 18px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.55;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(42px, 6vw, 72px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+        }
+
+        .section-heading p {
+            max-width: 600px;
+            margin-top: 25px;
+            font-size: 18px;
+            line-height: 1.8;
+            opacity: 0.65;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            min-height: 480px;
+            background: rgba(255, 255, 255, 0.055);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            backdrop-filter: blur(18px);
+            transition: transform 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .project-image {
+            display: block;
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.035);
+        }
+
+        .project-info {
+            padding: 28px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 10px;
+            font-size: 25px;
+        }
+
+        .project-info p {
+            max-width: 500px;
+            font-size: 15px;
+            line-height: 1.7;
+            opacity: 0.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .project-tag {
+            padding: 7px 11px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 22px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            opacity: 0.75;
+            transition: opacity 0.2s ease;
+        }
+
+        .project-link:hover {
+            opacity: 1;
+        }
+
+        .project-card.featured {
+            grid-column: span 2;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            min-height: 550px;
+        }
+
+        .project-card.featured .project-image {
+            width: 100%;
+            height: 100%;
+            min-height: 550px;
+        }
+
+        .project-card.featured .project-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 55px;
+        }
+
+        .project-card.featured .project-info h3 {
+            font-size: 38px;
+        }
+
+        @media (max-width: 800px) {
+            .floating-topbar {
+                top: 15px;
+                width: calc(100% - 30px);
+                padding: 10px 16px;
+            }
+
+            nav {
+                gap: 15px;
+                font-size: 13px;
+            }
+
             .hero-text {
                 left: 24px;
                 right: 24px;
@@ -185,18 +417,55 @@
             }
 
             .hero-text h2 {
-                font-size: 38px;
+                font-size: 40px;
+            }
+
+            .hero-text p {
+                font-size: 16px;
+            }
+
+            .projects-content {
+                padding: 100px 20px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card.featured {
+                grid-column: span 1;
+                display: block;
+                min-height: auto;
+            }
+
+            .project-card.featured .project-image {
+                height: 300px;
+                min-height: 0;
+            }
+
+            .project-card.featured .project-info {
+                padding: 30px;
+            }
+
+            .project-card.featured .project-info h3 {
+                font-size: 30px;
+            }
+
+            .shape-1 {
+                width: 400px;
+                height: 400px;
+            }
+
+            .shape-2 {
+                width: 350px;
+                height: 350px;
             }
         }
-
     </style>
 </head>
 
-
 <body>
-
     <section class="hero">
-
         <div class="slides">
             <img src="/public/images/20250723_103440.png" class="slide active" alt="">
             <img src="/public/images/20260331_105727.png" class="slide" alt="">
@@ -215,7 +484,6 @@
         </header>
 
         <div class="hero-text">
-
             <h2>
                 Building things with code.<br>
                 Exploring Ideas.
@@ -225,10 +493,7 @@
                 I'm Ace, a developer focused on creating websites, software and learning through every project.
             </p>
 
-            <a href="/projects/">
-                View Projects
-            </a>
-
+            <a href="#projects">View Projects</a>
         </div>
 
         <div class="dots">
@@ -236,19 +501,102 @@
             <span class="dot"></span>
             <span class="dot"></span>
         </div>
-
     </section>
 
+    <section class="projects-section" id="projects">
+        <div class="projects-background">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="ring ring-1"></div>
+            <div class="ring ring-2"></div>
+        </div>
+
+        <div class="projects-content">
+            <div class="section-heading">
+                <span class="section-label">Selected Work</span>
+                <h2>
+                    Things I've<br>
+                    built.
+                </h2>
+                <p>
+                    A collection of projects, experiments and ideas I've worked on while learning and building with code.
+                </p>
+            </div>
+
+            <div class="projects-grid">
+                <article class="project-card featured">
+                    <img src="/public/images/project-1.png" class="project-image" alt="Project preview">
+
+                    <div class="project-info">
+                        <span class="section-label">Featured Project</span>
+
+                        <h3>Project Name</h3>
+
+                        <p>
+                            A short description of your project goes here. Explain what you built, what problem it solves, or what you learned while creating it.
+                        </p>
+
+                        <div class="project-tags">
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">JavaScript</span>
+                        </div>
+
+                        <a href="#" class="project-link">View Project →</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <img src="/public/images/project-2.png" class="project-image" alt="Project preview">
+
+                    <div class="project-info">
+                        <h3>Project Two</h3>
+
+                        <p>
+                            Another project you've built and want to showcase.
+                        </p>
+
+                        <div class="project-tags">
+                            <span class="project-tag">Node.js</span>
+                            <span class="project-tag">Express</span>
+                        </div>
+
+                        <a href="#" class="project-link">View Project →</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <img src="/public/images/project-3.png" class="project-image" alt="Project preview">
+
+                    <div class="project-info">
+                        <h3>Project Three</h3>
+
+                        <p>
+                            A description of another project, experiment or application.
+                        </p>
+
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">API</span>
+                        </div>
+
+                        <a href="#" class="project-link">View Project →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
 
     <script>
-
-        let slides = document.querySelectorAll(".slide");
-        let dots = document.querySelectorAll(".dot");
+        const slides = document.querySelectorAll(".slide");
+        const dots = document.querySelectorAll(".dot");
+        const shapes = document.querySelectorAll(".shape, .ring");
 
         let current = 0;
 
         setInterval(() => {
-
             slides[current].classList.remove("active");
             dots[current].classList.remove("active");
 
@@ -260,11 +608,16 @@
 
             slides[current].classList.add("active");
             dots[current].classList.add("active");
-
         }, 5000);
 
+        window.addEventListener("scroll", () => {
+            const scroll = window.scrollY;
+
+            shapes.forEach((shape, index) => {
+                const speed = 0.03 + index * 0.012;
+                shape.style.transform = `translateY(${scroll * speed}px)`;
+            });
+        });
     </script>
-
 </body>
-
 </html>
