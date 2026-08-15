@@ -6,7 +6,6 @@
     <link rel="icon" type="image/png" href="/public/images/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <title>Ace Spectra</title>
-
     <meta property="og:title" content="Ace Spectra | Portfolio">
     <meta property="og:description" content="Building websites, software and exploring ideas through code. Explore my projects, skills, and journey as a developer.">
     <meta property="og:image" content="https://acespectra.pages.dev/public/images/Screenshot_27-7-2026_214838_acespectra.pages.dev.jpeg">
@@ -18,13 +17,23 @@
     <meta name="twitter:description" content="Building websites, software and exploring ideas through code.">
     <meta name="twitter:image" content="https://acespectra.pages.dev/public/images/Screenshot_27-7-2026_214838_acespectra.pages.dev.jpeg">
     <meta name="author" content="Ace Spectra">
-
     <style>
+        :root {
+            --bg: #08080b;
+            --text: #f4f4f0;
+            --muted: #8d8d95;
+            --soft: #b8b8bf;
+            --accent: #ffffff;
+            --surface: rgba(255, 255, 255, 0.055);
+            --surface-hover: rgba(255, 255, 255, 0.09);
+            --border: rgba(255, 255, 255, 0.12);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Manrope", sans-serif;
+            cursor: none;
         }
 
         html {
@@ -32,591 +41,246 @@
         }
 
         body {
-            background: #08080b;
-            color: white;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Manrope', sans-serif;
             overflow-x: hidden;
         }
 
-        .hero {
-            height: 100vh;
-            position: relative;
-            overflow: hidden;
+        a {
+            color: inherit;
+            text-decoration: none;
         }
 
-        .slides {
-            position: absolute;
-            inset: 0;
+        ::selection {
+            background: #fff;
+            color: #08080b;
         }
 
-        .slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
-
-        .slide.active {
-            opacity: 1;
-        }
-
-        .overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.35);
-            z-index: 1;
-        }
-
-        .floating-topbar {
+        .cursor {
             position: fixed;
-            top: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 25px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(12px);
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            border-radius: 10px;
-            z-index: 10;
-        }
-
-        nav {
-            display: flex;
-            gap: 25px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            opacity: 0.65;
-            transition: opacity 0.2s ease;
-        }
-
-        nav a:hover {
-            opacity: 1;
-        }
-
-        nav a.active {
-            opacity: 1;
-        }
-
-        .hero-text {
-            position: absolute;
-            top: 50%;
-            left: 120px;
-            transform: translateY(-50%);
-            max-width: 700px;
-            color: white;
-            z-index: 2;
-        }
-
-        .hero-text h2 {
-            font-size: 55px;
-            line-height: 1.1;
-        }
-
-        .hero-text p {
-            margin-top: 20px;
-            font-size: 18px;
-        }
-
-        .hero-text a {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 14px 28px;
-            background: white;
-            color: black;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .hero-text a:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-        }
-
-        .dots {
-            position: absolute;
-            bottom: 35px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 5;
-        }
-
-        .dot {
             width: 12px;
             height: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.7);
             border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+            transform: translate(-50%, -50%);
+            transition: width 0.25s ease, height 0.25s ease, background 0.25s ease;
+            mix-blend-mode: difference;
+        }
+
+        .cursor.active {
+            width: 48px;
+            height: 48px;
             background: white;
-            opacity: 0.5;
         }
 
-        .dot.active {
-            opacity: 1;
-        }
-
-        .projects-section {
-            position: relative;
-            min-height: 1500px;
-            overflow: hidden;
-            background: #08080b;
-        }
-
-        .projects-background {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-            z-index: 0;
-        }
-
-        .projects-background::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: rgba(5, 5, 8, 0.55);
-        }
-
-        .shape {
-            position: absolute;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            pointer-events: none;
-            will-change: transform;
-        }
-
-        .shape-1 {
-            width: 650px;
-            height: 650px;
-            top: 50px;
-            left: -220px;
-            border-radius: 47% 53% 62% 38% / 45% 35% 65% 55%;
-            background: linear-gradient(135deg, rgba(100, 100, 255, 0.22), rgba(255, 255, 255, 0.025));
-            transform: rotate(-25deg);
-            filter: blur(1px);
-        }
-
-        .shape-2 {
-            width: 550px;
-            height: 550px;
-            top: 400px;
-            right: -180px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(180, 100, 255, 0.2), rgba(255, 255, 255, 0.02) 65%, transparent 75%);
-            filter: blur(2px);
-        }
-
-        .shape-3 {
-            width: 450px;
-            height: 450px;
-            top: 850px;
-            left: 10%;
-            border-radius: 42% 58% 60% 40%;
-            background: linear-gradient(135deg, rgba(80, 160, 255, 0.16), rgba(255, 255, 255, 0.02));
-            transform: rotate(35deg);
-        }
-
-        .shape-4 {
-            width: 700px;
-            height: 350px;
-            top: 1100px;
-            right: -250px;
-            border-radius: 50%;
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(130, 100, 255, 0.16));
-            transform: rotate(-15deg);
-            filter: blur(5px);
-        }
-
-        .ring {
-            position: absolute;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .ring-1 {
-            width: 450px;
-            height: 450px;
-            top: 250px;
-            right: 15%;
-        }
-
-        .ring-2 {
-            width: 550px;
-            height: 550px;
-            top: 900px;
-            left: -180px;
-        }
-
-        .projects-content {
-            position: relative;
-            z-index: 2;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 150px 30px;
-        }
-
-        .section-heading {
-            max-width: 700px;
-            margin-bottom: 100px;
-        }
-
-        .section-label {
-            display: inline-block;
-            margin-bottom: 18px;
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0.55;
-        }
-
-        .section-heading h2 {
-            font-size: clamp(42px, 6vw, 72px);
-            line-height: 1.05;
-            letter-spacing: -2px;
-        }
-
-        .section-heading p {
-            max-width: 600px;
-            margin-top: 25px;
-            font-size: 18px;
-            line-height: 1.8;
-            opacity: 0.65;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-
-        .project-card {
-            position: relative;
-            overflow: hidden;
-            min-height: 480px;
-            background: rgba(255, 255, 255, 0.055);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 24px;
-            backdrop-filter: blur(18px);
-            transition: transform 0.4s ease, border-color 0.4s ease, background 0.4s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.25);
-        }
-
-        .project-image {
-            display: block;
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .project-card:hover .project-image {
-            transform: scale(1.035);
-        }
-
-        .project-info {
-            padding: 28px;
-        }
-
-        .project-info h3 {
-            margin-bottom: 10px;
-            font-size: 25px;
-        }
-
-        .project-info p {
-            max-width: 500px;
-            font-size: 15px;
-            line-height: 1.7;
-            opacity: 0.6;
-        }
-
-        .project-tags {
+        .nav {
+            position: fixed;
+            top: 22px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(92%, 1100px);
+            padding: 10px 12px 10px 20px;
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 20px;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid var(--border);
+            background: rgba(8, 8, 11, 0.7);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            border-radius: 100px;
+            z-index: 100;
         }
 
-        .project-tag {
-            padding: 7px 11px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(255, 255, 255, 0.09);
-            font-size: 12px;
-            opacity: 0.8;
-        }
-
-        .project-link {
-            display: inline-block;
-            margin-top: 22px;
-            color: white;
-            text-decoration: none;
+        .logo {
             font-size: 14px;
-            font-weight: 700;
-            opacity: 0.75;
-            transition: opacity 0.2s ease;
+            font-weight: 800;
+            letter-spacing: -0.04em;
         }
 
-        .project-link:hover {
-            opacity: 1;
+        .logo span {
+            color: var(--muted);
         }
 
-        .project-card.featured {
-            grid-column: span 2;
-            display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
-            min-height: 550px;
-        }
-
-        .project-card.featured .project-image {
-            width: 100%;
-            height: 100%;
-            min-height: 550px;
-        }
-
-        .project-card.featured .project-info {
+        .nav-links {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 55px;
+            gap: 6px;
+            align-items: center;
         }
 
-        .project-card.featured .project-info h3 {
-            font-size: 38px;
+        .nav-links a {
+            padding: 10px 15px;
+            border-radius: 100px;
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 600;
+            transition: 0.25s ease;
         }
 
-        @media (max-width: 800px) {
-            .floating-topbar {
-                top: 15px;
-                width: calc(100% - 30px);
-                padding: 10px 16px;
-            }
+        .nav-links a:hover {
+            background: var(--surface-hover);
+            color: white;
+        }
 
-            nav {
-                gap: 15px;
-                font-size: 13px;
-            }
+        .nav-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: "DM Mono", monospace;
+            font-size: 9px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
 
-            .hero-text {
-                left: 24px;
-                right: 24px;
-                max-width: none;
-            }
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+        }
 
-            .hero-text h2 {
-                font-size: 40px;
-            }
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 140px 7vw 100px;
+            overflow: hidden;
+        }
 
-            .hero-text p {
-                font-size: 16px;
-            }
+        .hero-content {
+            position: relative;
+            z-index: 5;
+            width: 100%;
+        }
 
-            .projects-content {
-                padding: 100px 20px;
-            }
+        .hero-title {
+            font-size: clamp(70px, 13vw, 190px);
+            line-height: 0.82;
+            letter-spacing: -0.09em;
+            font-weight: 800;
+            max-width: 1100px;
+        }
 
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
+        .hero-title .outline {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.55);
+        }
 
-            .project-card.featured {
-                grid-column: span 1;
-                display: block;
-                min-height: auto;
-            }
+        .hero-title .indent {
+            margin-left: 12vw;
+        }
 
-            .project-card.featured .project-image {
-                height: 300px;
-                min-height: 0;
-            }
+        .hero-bottom {
+            margin-top: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            max-width: 1050px;
+        }
 
-            .project-card.featured .project-info {
-                padding: 30px;
-            }
+        .hero-description {
+            max-width: 390px;
+            color: var(--soft);
+            font-size: 15px;
+            line-height: 1.8;
+        }
 
-            .project-card.featured .project-info h3 {
-                font-size: 30px;
-            }
-
-            .shape-1 {
-                width: 400px;
-                height: 400px;
-            }
-
-            .shape-2 {
-                width: 350px;
-                height: 350px;
-            }
+        .hero-description strong {
+            color: white;
         }
     </style>
 </head>
-
 <body>
-    <section class="hero">
-        <div class="slides">
-            <img src="/public/images/20250723_103440.png" class="slide active" alt="">
-            <img src="/public/images/20260331_105727.png" class="slide" alt="">
-            <img src="/public/images/20260331_105732.png" class="slide" alt="">
+    <div class="cursor"></div>
+    <nav class="nav">
+        <a href="#home" class="logo">ACE <span>SPECTRA</span></a>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
         </div>
-
-        <div class="overlay"></div>
-
-        <header class="floating-topbar">
-            <nav>
-                <a href="/" class="active">Home</a>
-                <a href="/skillsets/">Skillsets</a>
-                <a href="/projects/">Projects</a>
-                <a href="/hobbies/">Hobbies</a>
-            </nav>
-        </header>
-
-        <div class="hero-text">
-            <h2>
-                Building things with code.<br>
-                Exploring Ideas.
-            </h2>
-
-            <p>
-                I'm Ace, a developer focused on creating websites, software and learning through every project.
-            </p>
-
-            <a href="#projects">View Projects</a>
-        </div>
-
-        <div class="dots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-        </div>
-    </section>
-
-    <section class="projects-section" id="projects">
-        <div class="projects-background">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-            <div class="shape shape-4"></div>
-            <div class="ring ring-1"></div>
-            <div class="ring ring-2"></div>
-        </div>
-
-        <div class="projects-content">
-            <div class="section-heading">
-                <span class="section-label">Selected Work</span>
-                <h2>
-                    Things I've<br>
-                    built.
-                </h2>
-                <p>
-                    A collection of projects, experiments and ideas I've worked on while learning and building with code.
-                </p>
+    </nav>
+    <main>
+        <section class="hero" id="home">
+            <div class="shape shape-ring"></div>
+            <div class="shape shape-square"></div>
+            <div class="shape shape-dot-grid"></div>
+            <div class="shape shape-line"></div>
+            <div class="shape shape-blur"></div>
+            <div class="shape shape-star">✦</div>
+            <div class="hero-content">
+                <h1 class="hero-title reveal">
+                    ACE
+                    <br>
+                    <span class="outline indent">SPECTRA</span>
+                </h1>
             </div>
-
-            <div class="projects-grid">
-                <article class="project-card featured">
-                    <img src="/public/images/project-1.png" class="project-image" alt="Project preview">
-
-                    <div class="project-info">
-                        <span class="section-label">Featured Project</span>
-
-                        <h3>Project Name</h3>
-
-                        <p>
-                            A short description of your project goes here. Explain what you built, what problem it solves, or what you learned while creating it.
-                        </p>
-
-                        <div class="project-tags">
-                            <span class="project-tag">HTML</span>
-                            <span class="project-tag">CSS</span>
-                            <span class="project-tag">JavaScript</span>
-                        </div>
-
-                        <a href="#" class="project-link">View Project →</a>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <img src="/public/images/project-2.png" class="project-image" alt="Project preview">
-
-                    <div class="project-info">
-                        <h3>Project Two</h3>
-
-                        <p>
-                            Another project you've built and want to showcase.
-                        </p>
-
-                        <div class="project-tags">
-                            <span class="project-tag">Node.js</span>
-                            <span class="project-tag">Express</span>
-                        </div>
-
-                        <a href="#" class="project-link">View Project →</a>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <img src="/public/images/project-3.png" class="project-image" alt="Project preview">
-
-                    <div class="project-info">
-                        <h3>Project Three</h3>
-
-                        <p>
-                            A description of another project, experiment or application.
-                        </p>
-
-                        <div class="project-tags">
-                            <span class="project-tag">Python</span>
-                            <span class="project-tag">API</span>
-                        </div>
-
-                        <a href="#" class="project-link">View Project →</a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
+        </section>
+    </main>
     <script>
-        const slides = document.querySelectorAll(".slide");
-        const dots = document.querySelectorAll(".dot");
-        const shapes = document.querySelectorAll(".shape, .ring");
+        const cursor = document.querySelector(".cursor");
 
-        let current = 0;
+        document.addEventListener("mousemove", event => {
+            cursor.style.left = `${event.clientX}px`;
+            cursor.style.top = `${event.clientY}px`;
+        });
 
-        setInterval(() => {
-            slides[current].classList.remove("active");
-            dots[current].classList.remove("active");
+        document.querySelectorAll("a").forEach(link => {
+            link.addEventListener("mouseenter", () => {
+                cursor.classList.add("active");
+            });
 
-            current++;
+            link.addEventListener("mouseleave", () => {
+                cursor.classList.remove("active");
+            });
+        });
 
-            if (current >= slides.length) {
-                current = 0;
+        const revealElements = document.querySelectorAll(".reveal");
+
+        const revealObserver = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                threshold: 0.12
             }
+        );
 
-            slides[current].classList.add("active");
-            dots[current].classList.add("active");
-        }, 5000);
+        revealElements.forEach(element => {
+            revealObserver.observe(element);
+        });
+
+        const parallaxShapes = document.querySelectorAll(".shape");
+
+        window.addEventListener("mousemove", event => {
+            const x = (event.clientX / window.innerWidth - 0.5) * 2;
+            const y = (event.clientY / window.innerHeight - 0.5) * 2;
+
+            parallaxShapes.forEach((shape, index) => {
+                const strength = (index + 1) * 4;
+                shape.style.transform = `translate(${x * strength}px, ${y * strength}px)`;
+            });
+        });
+
+        const hero = document.querySelector(".hero");
 
         window.addEventListener("scroll", () => {
             const scroll = window.scrollY;
 
-            shapes.forEach((shape, index) => {
-                const speed = 0.03 + index * 0.012;
-                shape.style.transform = `translateY(${scroll * speed}px)`;
-            });
+            if (scroll < window.innerHeight) {
+                hero.querySelector(".hero-content").style.transform = `translateY(${scroll * 0.12}px)`;
+            }
         });
     </script>
 </body>
