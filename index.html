@@ -38,20 +38,21 @@
             <div class="shape shape-ring"></div>
             <div class="shape shape-square"></div>
             <div class="shape shape-dot-grid"></div>
-            <div class="shape shape-line"></div>
+            <div class="shape shape-diagonal"></div>
             <div class="shape shape-blur"></div>
 
             <div class="hero-content">
                 <div class="hero-title-wrap">
-                    <span class="title-star">✦</span>
+                    <div class="word word-ace">
+                        <span class="title-star">✦</span>
+                        <span class="word-text">ACE</span>
+                        <span class="word-line"></span>
+                    </div>
 
-                    <h1 class="hero-title reveal">
-                        <span class="ace-word">ACE</span>
-                        <br>
-                        <span class="outline indent spectra-word">SPECTRA</span>
-                    </h1>
-
-                    <span class="title-line"></span>
+                    <div class="word word-spectra">
+                        <span class="word-text outline">SPECTRA</span>
+                        <span class="word-line"></span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -75,7 +76,7 @@
             });
         });
 
-        const revealElements = document.querySelectorAll(".reveal");
+        const revealElements = document.querySelectorAll(".word");
 
         const revealObserver = new IntersectionObserver(
             entries => {
@@ -102,21 +103,20 @@
             const y = (event.clientY / window.innerHeight - 0.5) * 2;
 
             parallaxShapes.forEach((shape, index) => {
-                const strength = (index + 1) * 4;
+                const strength = 2 + index * 2;
 
                 shape.style.setProperty("--px", `${x * strength}px`);
                 shape.style.setProperty("--py", `${y * strength}px`);
             });
         });
 
-        const hero = document.querySelector(".hero");
+        const heroContent = document.querySelector(".hero-content");
 
         window.addEventListener("scroll", () => {
             const scroll = window.scrollY;
 
             if (scroll < window.innerHeight) {
-                hero.querySelector(".hero-content").style.transform =
-                    `translateY(${scroll * 0.12}px)`;
+                heroContent.style.transform = `translateY(${scroll * 0.12}px)`;
             }
         });
     </script>
