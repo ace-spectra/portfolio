@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="/public/images/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://acespectra.pages.dev/styles.css">
+    <link rel="stylesheet" href="/styles.css">
     <title>Ace Spectra</title>
     <meta property="og:title" content="Ace Spectra | Portfolio">
     <meta property="og:description" content="Building websites, software and exploring ideas through code. Explore my projects, skills, and journey as a developer.">
@@ -21,8 +21,10 @@
 </head>
 <body>
     <div class="cursor"></div>
+
     <nav class="nav">
         <a href="#home" class="logo">ACE <span>SPECTRA</span></a>
+
         <div class="nav-links">
             <a href="#home">Home</a>
             <a href="#about">About</a>
@@ -30,6 +32,7 @@
             <a href="#contact">Contact</a>
         </div>
     </nav>
+
     <main>
         <section class="hero" id="home">
             <div class="shape shape-ring"></div>
@@ -37,16 +40,23 @@
             <div class="shape shape-dot-grid"></div>
             <div class="shape shape-line"></div>
             <div class="shape shape-blur"></div>
-            <div class="shape shape-star">✦</div>
+
             <div class="hero-content">
-                <h1 class="hero-title reveal">
-                    ACE
-                    <br>
-                    <span class="outline indent">SPECTRA</span>
-                </h1>
+                <div class="hero-title-wrap">
+                    <span class="title-star">✦</span>
+
+                    <h1 class="hero-title reveal">
+                        <span class="ace-word">ACE</span>
+                        <br>
+                        <span class="outline indent spectra-word">SPECTRA</span>
+                    </h1>
+
+                    <span class="title-line"></span>
+                </div>
             </div>
         </section>
     </main>
+
     <script>
         const cursor = document.querySelector(".cursor");
 
@@ -93,7 +103,9 @@
 
             parallaxShapes.forEach((shape, index) => {
                 const strength = (index + 1) * 4;
-                shape.style.transform = `translate(${x * strength}px, ${y * strength}px)`;
+
+                shape.style.setProperty("--px", `${x * strength}px`);
+                shape.style.setProperty("--py", `${y * strength}px`);
             });
         });
 
@@ -103,7 +115,8 @@
             const scroll = window.scrollY;
 
             if (scroll < window.innerHeight) {
-                hero.querySelector(".hero-content").style.transform = `translateY(${scroll * 0.12}px)`;
+                hero.querySelector(".hero-content").style.transform =
+                    `translateY(${scroll * 0.12}px)`;
             }
         });
     </script>
