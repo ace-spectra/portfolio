@@ -18,7 +18,6 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/languages/top/ace-spectra/portfolio?style=flat-square" alt="Top Language">
   <img src="https://img.shields.io/github/languages/count/ace-spectra/portfolio?style=flat-square" alt="Language Count">
   <img src="https://img.shields.io/github/repo-size/ace-spectra/portfolio?style=flat-square" alt="Repository Size">
 </p>
