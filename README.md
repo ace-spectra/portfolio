@@ -29,24 +29,6 @@
 
 **Ace Spectra** is a personal developer portfolio focused on showcasing projects, skills and experience through a clean, minimal interface.
 
-The website uses a dark visual style with large typography, subtle glassmorphism, animated elements and a custom cursor to create a modern developer-focused experience.
-
-The project intentionally keeps the stack lightweight — there is no framework or build system required.
-
-## ✨ Features
-
-* 🌑 Minimal dark-themed interface
-* 🎨 Modern typography and visual effects
-* 🖱️ Custom interactive cursor
-* ✨ Scroll/reveal animations
-* 📱 Responsive layout
-* 🧊 Glassmorphism navigation
-* 🔗 Social/project links
-* 🖼️ Local image assets
-* ⚡ No framework required
-* 🚀 Easy to deploy as a static website
-* 🔍 Open Graph metadata for link previews
-* 🐦 Twitter/X card metadata
 
 ## 🛠️ Built With
 
@@ -68,46 +50,6 @@ portfolio/
 ├── index.html
 └── README.md
 ```
-
-The project is intentionally simple: the majority of the website lives inside `index.html`, while images and other visual assets are kept inside `public/images/`.
-
-## 🚀 Getting Started
-
-### Clone the repository
-
-```bash
-git clone https://github.com/ace-spectra/portfolio.git
-cd portfolio
-```
-
-### Run locally
-
-Because this is a static website, you don't need Node.js, npm or any build tools.
-
-You can simply open:
-
-```text
-index.html
-```
-
-in your browser.
-
-For a better development experience, use a local HTTP server such as VS Code's Live Server extension.
-
-## 🌐 Deployment
-
-This project can be deployed to practically any static hosting provider.
-
-Recommended options include:
-
-* [Cloudflare Pages](https://pages.cloudflare.com/)
-* [GitHub Pages](https://pages.github.com/)
-* [Netlify](https://www.netlify.com/)
-* [Vercel](https://vercel.com/)
-
-The live version of the portfolio is available at:
-
-**https://acespectra.pages.dev/**
 
 ## 🎨 Design
 
