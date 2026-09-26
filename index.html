@@ -56,6 +56,102 @@
                 </div>
             </div>
         </section>
+
+        <section class="about" id="about">
+            <div class="shape shape-ring shape-skills"></div>
+            <div class="shape shape-dot-grid shape-skills"></div>
+            <div class="shape shape-blur shape-skills"></div>
+
+            <div class="section-head">
+                <h2>Things I <span>code with</span></h2>
+                <p class="section-sub">Hover a skill — matching projects light up below</p>
+            </div>
+
+            <div class="skill-group">
+                <span class="skill-group-label">Languages</span>
+                <div class="skill-tags">
+                    <button class="skill-tag" data-tech="javascript">JavaScript</button>
+                    <button class="skill-tag" data-tech="python">Python</button>
+                    <button class="skill-tag" data-tech="lua">Lua</button>
+                    <button class="skill-tag" data-tech="html5">HTML5</button>
+                    <button class="skill-tag" data-tech="css3">CSS3</button>
+                    <button class="skill-tag" data-tech="sql">SQL</button>
+                </div>
+            </div>
+
+            <div class="skill-group">
+                <span class="skill-group-label">Backend &amp; data</span>
+                <div class="skill-tags">
+                    <button class="skill-tag" data-tech="discordpy">discord.py</button>
+                    <button class="skill-tag" data-tech="postgresql">PostgreSQL</button>
+                </div>
+            </div>
+
+            <div class="skill-group">
+                <span class="skill-group-label">Platforms &amp; tools</span>
+                <div class="skill-tags">
+                    <button class="skill-tag" data-tech="cloudflare">Cloudflare</button>
+                    <button class="skill-tag" data-tech="vercel">Vercel</button>
+                    <button class="skill-tag" data-tech="netlify">Netlify</button>
+                    <button class="skill-tag" data-tech="insomnia">Insomnia</button>
+                    <button class="skill-tag" data-tech="vscode">VS Code</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects" id="projects">
+            <div class="shape shape-square shape-projects"></div>
+            <div class="shape shape-diagonal shape-projects"></div>
+
+            <div class="section-head">
+                <h2>Selected <span>projects</span></h2>
+            </div>
+
+            <a class="project-row" data-tech="javascript html5 css3" href="#" target="_blank" rel="noopener">
+                <h3 class="project-title">Cevro</h3>
+                <p class="project-desc">Community management platform.</p>
+                <div class="project-tags">
+                    <span class="project-tag">JavaScript</span>
+                    <span class="project-tag">HTML5</span>
+                    <span class="project-tag">CSS3</span>
+                </div>
+            </a>
+
+            <a class="project-row" data-tech="python discordpy" href="#" target="_blank" rel="noopener">
+                <h3 class="project-title">Modmail bot - Close Hours</h3>
+                <p class="project-desc">A plugin for the famous reddit-like discord modmail bot.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Javascript</span>
+                    <span class="project-tag">discord.js</span>
+                </div>
+            </a>
+
+            <a class="project-row" data-tech="javascript cloudflare" href="#" target="_blank" rel="noopener">
+                <h3 class="project-title">Lanyard alternative</h3>
+                <p class="project-desc">Self-built Discord presence API for Cloudflare Workers.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Cloudflare</span>
+                </div>
+            </a>
+
+             <a class="project-row" data-tech="javascript cloudflare" href="#" target="_blank" rel="noopener">
+                <h3 class="project-title">Lumo Ranking</h3>
+                <p class="project-desc">Self-Built discord bot to handle staffing-related matters.</p>
+                <div class="project-tags">
+                    <span class="project-tag">discord.py</span>
+                    <span class="project-tag">Python</span>
+                </div>
+            </a>
+
+             <a class="project-row" data-tech="javascript cloudflare" href="#" target="_blank" rel="noopener">
+                <h3 class="project-title">Lumo Harrison</h3>
+                <p class="project-desc">Self-Built discord bot to handle moderation, member counts and fun commands.</p>
+                <div class="project-tags">
+                    <span class="project-tag">discord.py</span>
+                    <span class="project-tag">Python</span>
+                </div>
+            </a>
+        </section>
     </main>
 
     <script>
@@ -66,7 +162,7 @@
             cursor.style.top = `${event.clientY}px`;
         });
 
-        document.querySelectorAll("a").forEach(link => {
+        document.querySelectorAll("a, button").forEach(link => {
             link.addEventListener("mouseenter", () => {
                 cursor.classList.add("active");
             });
@@ -118,6 +214,42 @@
             if (scroll < window.innerHeight) {
                 heroContent.style.transform = `translateY(${scroll * 0.12}px)`;
             }
+        });
+
+        const skillTags = document.querySelectorAll(".skill-tag");
+        const projectRows = document.querySelectorAll(".project-row");
+        let activeTech = null;
+
+        function applyFilter(tech) {
+            projectRows.forEach(row => {
+                const techs = row.dataset.tech.split(" ");
+                const match = !tech || techs.includes(tech);
+                row.classList.toggle("is-dimmed", !match);
+
+                row.querySelectorAll(".project-tag").forEach(tag => {
+                    const norm = t => t.toLowerCase().replace(/[.\s]/g, "");
+                    tag.classList.toggle("is-lit", tech && norm(tag.textContent) === norm(tech));
+                });
+            });
+
+            skillTags.forEach(tag => {
+                tag.classList.toggle("is-active", tag.dataset.tech === tech);
+            });
+        }
+
+        skillTags.forEach(tag => {
+            tag.addEventListener("mouseenter", () => {
+                if (!activeTech) applyFilter(tag.dataset.tech);
+            });
+
+            tag.addEventListener("mouseleave", () => {
+                if (!activeTech) applyFilter(null);
+            });
+
+            tag.addEventListener("click", () => {
+                activeTech = activeTech === tag.dataset.tech ? null : tag.dataset.tech;
+                applyFilter(activeTech);
+            });
         });
     </script>
 </body>
