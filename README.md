@@ -42,15 +42,14 @@
 
 ## 🚀 Deploying to Cloudflare Pages
 
-In the Pages project, set the build configuration to:
+In the Pages project, set the build command to:
 
 | Setting | Value |
 | --- | --- |
 | Root directory | Leave blank (repository root) |
 | Build command | `npm run build` |
-| Build output directory | `dist` |
 
-After saving these settings, trigger a new deployment. Pages must serve the generated `dist` directory; deploying the repository root serves the uncompiled JSX source and causes browser module MIME-type errors.
+The output directory is declared in [`wrangler.jsonc`](./wrangler.jsonc) and must be `dist`. Pages must serve the generated build, not the repository root; serving the root loads uncompiled JSX and causes browser module MIME-type errors. Trigger a new deployment after updating the Pages build command.
 
 ## 📁 Project Structure
 
