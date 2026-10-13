@@ -1,7 +1,7 @@
 # Ace Spectra — Portfolio
 
 <p align="center">
-  <strong>A modern, minimalist developer portfolio built with vanilla HTML, CSS and JavaScript.</strong>
+  <strong>A modern, minimalist developer portfolio built with React and Vite.</strong>
 </p>
 
 <p align="center">
@@ -33,20 +33,28 @@
 
 | Technology           | Usage                          |
 | -------------------- | ------------------------------ |
-| **HTML5**            | Page structure and content     |
-| **CSS3**             | Styling, layout and animations |
-| **JavaScript**       | Interactions and animations    |
-| **Google Fonts**     | Manrope typography             |
-| **Cloudflare Pages** | Deployment                     |
+| **React**            | UI structure and component logic |
+| **Vite**             | Development tooling and build    |
+| **CSS3**             | Styling, layout and animations   |
+| **JavaScript**       | App logic and interactions       |
+| **Google Fonts**     | Manrope typography               |
+| **Cloudflare Pages** | Deployment                       |
 
 ## 📁 Project Structure
 
 ```text
 portfolio/
 ├── public/
-│   └── images/
+│   └── assets/
 │       └── ...
+├── src/
+│   ├── App.jsx
+│   ├── App.css
+│   ├── main.jsx
+│   └── index.css
 ├── index.html
+├── package.json
+├── vite.config.js
 └── README.md
 ```
 
