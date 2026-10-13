@@ -35,7 +35,7 @@
 | -------------------- | ------------------------------ |
 | **React**            | UI structure and component logic |
 | **Vite**             | Development tooling and build    |
-| **CSS3**             | Styling, layout and animations   |
+| **CSS**             | Styling, layout and animations   |
 | **JavaScript**       | App logic and interactions       |
 | **Google Fonts**     | Manrope typography               |
 | **Cloudflare Pages** | Deployment                       |
