@@ -40,17 +40,6 @@
 | **Google Fonts**     | Manrope typography               |
 | **Cloudflare Pages** | Deployment                       |
 
-## 🚀 Deploying to Cloudflare Pages
-
-In the Pages project, set the build command to:
-
-| Setting | Value |
-| --- | --- |
-| Root directory | Leave blank (repository root) |
-| Build command | `npm run build` |
-
-The output directory is declared in [`wrangler.jsonc`](./wrangler.jsonc) and must be `dist`. Pages must serve the generated build, not the repository root; serving the root loads uncompiled JSX and causes browser module MIME-type errors. Trigger a new deployment after updating the Pages build command.
-
 ## 📁 Project Structure
 
 ```text

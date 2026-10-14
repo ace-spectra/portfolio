@@ -36,6 +36,12 @@ export default function App() {
       tech: ["python", "discordpy"],
       tags: ["discord.py", "Python"],
     },
+    {
+      title: "Portfolio",
+      desc: "This is the very website you're currently viewing, listing all my experiences.",
+      tech: ["javascript", "react", "cloudflare"],
+      tags: ["JavaScript", "React", "Cloudflare"]
+    }
   ];
 
   useEffect(() => {
@@ -63,6 +69,7 @@ export default function App() {
         ["html5", "HTML5"],
         ["css3", "CSS3"],
         ["sql", "SQL"],
+        ["react", "React"]
       ],
     },
     {
@@ -70,6 +77,8 @@ export default function App() {
       skills: [
         ["discordpy", "discord.py"],
         ["postgresql", "PostgreSQL"],
+        ["supabase", "Supabase"],
+        ["mongodb", "MongoDB"],
       ],
     },
     {
@@ -82,6 +91,15 @@ export default function App() {
         ["vscode", "VS Code"],
       ],
     },
+    {
+      label: "Servers & Hosting",
+      skills: [
+        ["docker", "Docker"],
+        ["nginx", "Nginx"],
+        ["linux", "Linux"],
+        ["windows server", "Windows Server"],
+      ]
+    }
   ];
 
   return (
